@@ -40,44 +40,33 @@ const getCityWeather = function(city){
 };
 
 const displayWeather = function(weather, searchCity){
-   //clear old content
    weatherContainerEl.textContent= "";  
    citySearchInputEl.textContent=searchCity;
 
-   //console.log(weather);
-
-   //create date element
    const currentDate = document.createElement("span")
    currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
    citySearchInputEl.appendChild(currentDate);
 
-   //create an image element
    const weatherIcon = document.createElement("img")
    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
    citySearchInputEl.appendChild(weatherIcon);
 
-   //create a span element to hold temperature data
    const temperatureEl = document.createElement("span");
    temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
    temperatureEl.classList = "list-group-item"
   
-   //create a span element to hold Humidity data
    const humidityEl = document.createElement("span");
    humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
    humidityEl.classList = "list-group-item"
 
-   //create a span element to hold Wind data
    const windSpeedEl = document.createElement("span");
    windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
    windSpeedEl.classList = "list-group-item"
 
-   //append to container
    weatherContainerEl.appendChild(temperatureEl);
 
-   //append to container
    weatherContainerEl.appendChild(humidityEl);
 
-   //append to container
    weatherContainerEl.appendChild(windSpeedEl);
 
    const lat = weather.coord.lat;
@@ -92,11 +81,8 @@ const getUvIndex = function(lat,lon){
     .then(function(response){
         response.json().then(function(data){
             displayUvIndex(data)
-           // console.log(data)
         });
     });
-    //console.log(lat);
-    //console.log(lon);
 }
  
 const displayUvIndex = function(index){
@@ -118,7 +104,6 @@ const displayUvIndex = function(index){
 
     uvIndexEl.appendChild(uvIndexValue);
 
-    //append index to current weather
     weatherContainerEl.appendChild(uvIndexEl);
 }
 
@@ -146,40 +131,29 @@ const display5Day = function(weather){
        const forecastEl=document.createElement("div");
        forecastEl.classList = "card bg-primary text-light m-2";
 
-       //console.log(dailyForecast)
-
-       //create date element
        const forecastDate = document.createElement("h5")
        forecastDate.textContent= moment.unix(dailyForecast.dt).format("MMM D, YYYY");
        forecastDate.classList = "card-header text-center"
        forecastEl.appendChild(forecastDate);
 
-       
-       //create an image element
        const weatherIcon = document.createElement("img")
        weatherIcon.classList = "card-body text-center";
        weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png`);  
 
-       //append to forecast card
        forecastEl.appendChild(weatherIcon);
        
-       //create temperature span
        const forecastTempEl=document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
        forecastTempEl.textContent = dailyForecast.main.temp + " °F";
 
-        //append to forecast card
         forecastEl.appendChild(forecastTempEl);
 
        const forecastHumEl=document.createElement("span");
        forecastHumEl.classList = "card-body text-center";
        forecastHumEl.textContent = dailyForecast.main.humidity + "  %";
 
-       //append to forecast card
        forecastEl.appendChild(forecastHumEl);
 
-        // console.log(forecastEl);
-       //append to five day container
         forecastContainerEl.appendChild(forecastEl);
     }
 
@@ -187,8 +161,6 @@ const display5Day = function(weather){
 
 const pastSearch = function(pastSearch){
  
-    // console.log(pastSearch)
-
     pastSearchEl = document.createElement("button");
     pastSearchEl.textContent = pastSearch;
     pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
@@ -206,8 +178,6 @@ const pastSearchHandler = function(event){
         get5Day(city);
     }
 }
-
-// pastSearch();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
