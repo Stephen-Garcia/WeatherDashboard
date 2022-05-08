@@ -1,93 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- Bootstrap CSS -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-      <link rel="stylesheet" href="Assets/style.css">
-      <title>Weather Dashboard</title>
-   </head>
-   <body>
-      <!-- Main Content Container -->
-      <div class="container-fluid">
-         <div class="row navbar navbar-dark bg-dark">
-            <div class="col-12 text-center">
-               <h1 class ="navbar-brand pt-2">Weather Dashboard</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class = "bg-dark text-white text-center p-2">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="container-fluid">
+        <div class = "row">
+            <div class="col-12 col-md-3 p-2 search-column">
+                <form class = "border p-2" id = "city-search-form">
+                    <h4>Search for a City</h2>
+                    <input id="city" type = "text" autofocus = "true" class = "form-input"/>
+                    <button class = "btn btn-primary" type = "submit">Search</button>
+                </form>
+                <div class = "past-search border" id = "past-search-buttons"></div>
             </div>
-         </div>
-         <!-- Search Column -->
-         <div class="row content-row">
-            <div class="col-12 col-md-3 bg-light pt-3">
-               <h2>Search Cities:</h4>
-               <form id="target">
-                  <input type="text" class="form-control" id="city-input" placeholder="Enter City Here"></input>
-                  <button type="submit" class="btn btn-primary" id="city-submit" style="width: 100%;" value="Search">Search</button>
-               </form>
-         <div class="card">
-            <ul class ="list-group list-group-flush" id="search-history"></ul>
-            <button id="clear-history" class="btn btn-sm btn-secondary">Clear History</button>
-         </div>
-         </div>
-         <!-- Weather Information-->
-         <div id="weather-content" class="col-12 col-md-9">
-            <div class="row">
-               <div class="col-12">
-                  <div class="city-info border rounded my-3 px-3 py-3" id='right-div' style="background: lightgrey;">
-                     
-                  </div>
-               </div>
-            </div>
-            <!-- 5-Day Weather Forecast -->
-            <div class="row">
-              <div class="col-12">
-                <h3>5-Day Weather Forecast</h3>
-              </div>
-            </div>
-            <div
-            style="background: lightgray; padding: 5px; display: flex; flex-direction: row; justify-content: space-around; border-radius: 5px;">
-            <div style="width: 18%; margin-top: 15px;">
-                <div class="card text-white bg-secondary mb-3" style="max-width:18rem;" id="card-0">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-                    </div>
+            <div class="col-12 col-md-9">
+                <div class = "row border selected-city" id = "current-forecast">
+                    <div class = "col-12">
+                        <h2 id="searched-city"></h2>
+                        <div id = "current-weather-container" class = "list-group"></div>
+                    </div>  
                 </div>
-            </div>
-            <div style="width: 18%; margin-top: 15px;">
-                <div class="card text-white bg-secondary mb-3" id="card-1">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div style="width: 18%; margin-top: 15px;">
-                <div class="card text-white bg-secondary mb-3" id="card-2">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div style="width: 18%; margin-top: 15px;">
-                <div class="card text-white bg-secondary mb-3" id="card-3">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div style="width: 18%; margin-top: 15px;">
-                <div class="card text-white bg-secondary mb-3"id="card-4">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-                    </div>
-                </div>
+                <div class = "row border" id = "five-day-forecast">
+                        <h2 class= "col-12" id = "forecast"></h2>
+                        <div class = "d-flex" id = "fiveday-container"></div>
+                </div>  
             </div>
         </div>
-         </div>
-         </div>
-      </div>
-      <!--End Main Content -->
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script src="Assets/script.js"></script>
-   </body>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
 </html>
